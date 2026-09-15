@@ -106,5 +106,3 @@ jac browse console
 The tests cover account impersonation, unauthorized writes/deletion, post length,
 like/unlike, scoring thresholds, and the line limit. Build output, dependency
 trees, local credentials, and screenshots under `.jac/` are generated artifacts.
-
-See [QA.md](QA.md) for the completed browser and cross-client checks.
