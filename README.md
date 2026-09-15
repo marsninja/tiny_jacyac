@@ -23,14 +23,16 @@ The same web client adapts to a single column at **768 × 1024**.
 
 <img src="docs/screenshots/web-tablet.png" alt="Tablet-sized web client with the composer above the feed" width="560">
 
-### Mobile · phone layout
+### Mobile · native Android
 
-The separately built mobile client at **390 × 844**, captured in its browser
-preview. The two views show composing a post, then scrolling through the feed.
+The **React Native Android app**, captured directly from a Pixel 5 emulator
+running Android 11 at **1080 × 2340**. These captures use the debug APK with
+Metro and the shared backend. The two views show composing a post, then the
+feed and reputation.
 
 | Compose | Feed and reputation |
 | --- | --- |
-| <img src="docs/screenshots/mobile-compose.png" alt="Mobile client showing the post composer" width="320"> | <img src="docs/screenshots/mobile-feed.png" alt="Mobile client showing likes, owner-only deletion, and reputation" width="320"> |
+| <img src="docs/screenshots/mobile-android-compose.png" alt="Native Android app showing the post composer" width="320"> | <img src="docs/screenshots/mobile-android-feed.png" alt="Native Android app showing a shared post, owner-only deletion, and 23 reputation points" width="320"> |
 
 ### Native desktop · Linux
 
@@ -72,6 +74,9 @@ The desktop entry includes an empty `with entry` block so the packaged host has
 the bootstrap artifact expected by the current desktop runtime.
 The desktop generator in that checkout also needs explicitly typed port values
 so the native host includes the port number in its navigation URL.
+The native Android captures additionally use a local Jac runtime fix that
+exports `useJacState` and `jacSetToken`; both are required to render the shared
+screen and sign in. That runtime fix is not yet published.
 
 ## Run
 
