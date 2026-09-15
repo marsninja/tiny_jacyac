@@ -6,6 +6,44 @@ web, React Native mobile, native desktop host, CLI, feed service, scoring servic
 The shared mobUI screen supports registration, sign-in, posting, likes, deletion,
 and reputation. Posts persist on the shared graph; only their authors can delete them.
 
+## Screenshots
+
+One community across four clients. These captures show the running app with
+sample posts shared between the web, mobile, desktop, and CLI clients.
+
+### Web · desktop browser
+
+The two-column layout at **1440 × 1000**, with the composer, feed, and reputation.
+
+![Web client showing the shared feed and 23 reputation points](docs/screenshots/web-desktop.png)
+
+### Web · tablet browser
+
+The same web client adapts to a single column at **768 × 1024**.
+
+<img src="docs/screenshots/web-tablet.png" alt="Tablet-sized web client with the composer above the feed" width="560">
+
+### Mobile · phone layout
+
+The separately built mobile client at **390 × 844**, captured in its browser
+preview. The two views show composing a post, then scrolling through the feed.
+
+| Compose | Feed and reputation |
+| --- | --- |
+| <img src="docs/screenshots/mobile-compose.png" alt="Mobile client showing the post composer" width="320"> | <img src="docs/screenshots/mobile-feed.png" alt="Mobile client showing likes, owner-only deletion, and reputation" width="320"> |
+
+### Native desktop · Linux
+
+The packaged **1200 × 800** WebKitGTK window, showing the shared feed and sign-in.
+
+![Native Linux desktop client displaying the community feed](docs/screenshots/desktop.png)
+
+### CLI · terminal
+
+The CLI reads the same posts and reputation from the two services.
+
+![Terminal running jac run cli to display the feed and 23 reputation points](docs/screenshots/cli.png)
+
 ## How it fits
 
 The three graphical clients import one responsive mobUI component. The CLI uses
