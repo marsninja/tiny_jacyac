@@ -61,28 +61,26 @@ The four client entry points are `web.jac`, `mobile.jac`, `desktop.jac`, and
 | CLI | 116 |
 | Web, mobile, desktop entry points | 17 |
 | Tests | 66 |
-| `jac.toml` | 50 |
-| **Total** | **955** |
+| `jac.toml` | 47 |
+| **Total** | **952** |
 
 Reproduce the count with `wc -l jac.toml *.jac core/*.jac`.
 Documentation, dependencies, compiler/runtime code, and generated platform files
-are outside this application-source count. The example requires the compiler
-routing fix in the local `j3` checkout, which preserves service routes for inline
-client RPC calls, including aliased imports. That compiler fix lives in `j3`,
-outside this project repository.
+are outside this application-source count. Local compatibility checks use Jac
+`0.37.18`. The project uses the installed Jac binary without a compiler-source
+override. Web fleet routing and authentication are exercised against that binary.
 The desktop entry includes an empty `with entry` block so the packaged host has
 the bootstrap artifact expected by the current desktop runtime.
-The desktop generator in that checkout also needs explicitly typed port values
-so the native host includes the port number in its navigation URL.
-The native Android captures additionally use a local Jac runtime fix that
+The original desktop captures used a generator fix with explicitly typed port
+values so the native host includes the port number in its navigation URL.
+The original native Android captures additionally used a local Jac runtime fix that
 exports `useJacState` and `jacSetToken`; both are required to render the shared
-screen and sign in. That runtime fix is not yet published.
+screen and sign in. Native Android and iOS execution must be validated separately
+from the mobile browser preview on the installed runtime.
 
 ## Run
 
-The development layout is `~/repos/j3/_planning/tiny_jacyac`. The `[dev]` section
-in `jac.toml` selects `../../jac`, the compiler source in the surrounding `j3`
-checkout. From this project directory:
+From this project directory, using the locally installed Jac binary:
 
 ```bash
 jac install
@@ -128,9 +126,8 @@ jac build --platform ios mobile       # requires macOS and Xcode
 
 Desktop uses an OS webview in a compiled native host. The feed and scoring
 services execute on the server. No standalone LLVM scoring executable is included.
-For another checkout location, update `[dev].jaclang_source` to your Jac source
-directory, or remove `[dev]` and use a compatible Jac binary with workspace
-support and the compiler fixes described above.
+To work on the compiler itself, add `[dev].jaclang_source` pointing to an existing
+Jac source directory. Ordinary application use does not require a source checkout.
 
 ## Validate
 

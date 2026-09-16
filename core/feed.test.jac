@@ -2,7 +2,7 @@ import from pathlib { Path }
 import from tempfile { TemporaryDirectory }
 import from jaclang.testing.testing { JacTestClient }
 
-def call(client: JacTestClient, name: str, fields: dict = {}) -> any {
+def call(client: JacTestClient, name: str, fields: dict[str, any] = {}) -> any {
     response = client.post("/function/" + name, json=fields);
     assert response.ok , response.text;
     return response.data["result"];
